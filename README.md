@@ -1,4 +1,4 @@
-# Front-end snippet for Webpack demonstration for starter
+# Front-end snippet of Webpack tutorial for beginner
 
 
 ## Initialize:
@@ -105,6 +105,7 @@ Edit `package.json`:
     $ npm install babel-loader babel-core --save-dev
 ```
 - [Babel Official Setup Docs](https://babeljs.io/docs/setup/)
+
 ##### Webpack config
 ```js
     module: {
@@ -132,8 +133,10 @@ $ npm install --save-dev babel-preset-es2015
 - [Babel Official Website](https://babeljs.io/)
 - [Learn ES2015](https://babeljs.io/learn-es2015/)
 - [Babel Plugins](https://babeljs.io/docs/plugins/)
+
 ##### Write ES2015 class
 - [Sample](./src/Es2015Class.js)
 
 
+## License
 
