@@ -75,6 +75,7 @@ Edit `package.json`:
 ##### Install Loader
 ```sh
     $ npm install css-loader --save-dev
+    $ npm install style-loader --save-dev
 ```
 ##### JS Code
 - [Example Code](./src/Css.js)
