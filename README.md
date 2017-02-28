@@ -125,7 +125,7 @@ Edit `package.json`:
 $ npm install --save-dev babel-cli babel-preset-env
 $ npm install --save-dev babel-preset-es2015
 ```
-##### Create a [.babelrc](./babelrc) file (or use your package.json)
+##### Create a [.babelrc](./.babelrc) file (or use your package.json)
 ```json
 {
   "presets": ["es2015"]
