@@ -1,5 +1,6 @@
 # Front-end snippet of Webpack tutorial for beginner
 
+[![Build Status](https://travis-ci.org/sicaboy/fe-webpack-demo.svg?branch=master)](https://travis-ci.org/sicaboy/fe-webpack-demo)
 
 ## Initialize:
 
