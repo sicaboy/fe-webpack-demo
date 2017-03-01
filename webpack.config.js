@@ -4,6 +4,7 @@
 
 let webpack = require("webpack");
 let path = require('path');
+let inProduction = (process.env.NODE_ENV === 'production');
 
 module.exports = {
     entry: './src/main.js',
@@ -23,5 +24,13 @@ module.exports = {
                 loader: "babel-loader"
             }
         ]
-    }
+    },
+    plugins: [
+    ]
 };
+
+if (inProduction) {
+    module.exports.plugins.push(
+        new webpack.optimize.UglifyJsPlugin()
+    )
+}

@@ -99,7 +99,7 @@ Edit `package.json`:
 ```
 
 
-## ES2015 Compilation with Babel
+### ES2015 Compilation with Babel
  
 ##### Installation 
 ```sh
@@ -138,6 +138,41 @@ $ npm install --save-dev babel-preset-es2015
 ##### Write ES2015 class
 - [Sample](./src/Es2015Class.js)
 
+## Minimize bundled JS file for production
+Add following element into webpack.config.js, bundle js file will be minimized no matter in dev or production. 
+```js
+ 
+ plugins: [
+        new webpack.optimize.UglifyJsPlugin()
+    ]
+```
+OR if you want to minimize bundle js file in production only 
+```js
+if (process.env.NODE_ENV === 'production') {
+    module.exports.plugins.push(
+        new webpack.optimize.UglifyJsPlugin()
+    )
+}
+```
+- Check [webpack.config.js](./webpack.config.js)
+
+Then, change package.json
+```json
+  "scripts": {
+    "production": "NODE_ENV=production webpack",
+    "dev": "webpack",
+    "watch": "npm run dev -- --watch"
+  },
+```
+
+Done, if you can minimize the [bundle js](./dist/bundle.js) by running
+```sh
+    $ npm run production
+```
+OR not minimized for development
+```sh
+    $ npm run dev
+```
 
 ## License
 
