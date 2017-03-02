@@ -212,13 +212,20 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 rules: [
 +    {
 +        test: /\.s[ac]ss$/,
-+        use: ['style-loader', 'css-loader', 'sass-loader']
++        use: ExtractTextPlugin.extract({
++            use: ['css-loader', 'sass-loader'],
++            fallback: 'style-loader'
++        })
 +    }
+],
+plugins: [
++    new ExtractTextPlugin('[name].css'),
 ]
 ```
 Notice: loaders always applie from right to left. So the example above applies sass-loader first, then css-loader and style-loader.
-      
+   
 Please refer to these files:
+- [./webpack.config.js](./webpack.config.js)
 - [./src/Sass.js](./src/Sass.js)
 - [./src/bg.scss](./src/bg.scss)
 
