@@ -141,11 +141,10 @@ $ npm install --save-dev babel-preset-es2015
 
 ## Minimize bundled JS file for production
 Add following element into webpack.config.js, bundle js file will be minimized no matter in dev or production. 
-```js
- 
- plugins: [
-        new webpack.optimize.UglifyJsPlugin()
-    ]
+```js 
+plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+]
 ```
 OR if you want to minimize bundle js file in production only 
 ```js
@@ -166,7 +165,7 @@ Then, change package.json
   },
 ```
 
-Done, if you can minimize the [bundle js](./dist/bundle.js) by running
+Done, if you can minimize the bundle js by running
 ```sh
 $ npm run production
 ```
@@ -181,6 +180,7 @@ $ npm run dev
 $ npm install sass-loader node-sass --save-dev
 ```
 
+#### Method 1: Injecting CSS into DOM
 ##### Webpack config
 ```js
 rules: [
@@ -192,9 +192,53 @@ rules: [
 ```
 Notice: loaders always applie from right to left. So the example above applies sass-loader first, then css-loader and style-loader.
       
-Please refer to the files:
+Please refer to these files:
 - [./src/Sass.js](./src/Sass.js)
 - [./src/bg.scss](./src/bg.scss)
 
-## License
 
+#### Method 2: Extract CSS to a Dedicated File
+
+##### Install Loader
+```sh
+$ npm install --save-dev extract-text-webpack-plugin
+```
+
+- Refer to: https://github.com/webpack-contrib/extract-text-webpack-plugin
+
+##### Webpack config
+```js
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+rules: [
++    {
++        test: /\.s[ac]ss$/,
++        use: ['style-loader', 'css-loader', 'sass-loader']
++    }
+]
+```
+Notice: loaders always applie from right to left. So the example above applies sass-loader first, then css-loader and style-loader.
+      
+Please refer to these files:
+- [./src/Sass.js](./src/Sass.js)
+- [./src/bg.scss](./src/bg.scss)
+
+##### Minimize extracted CSS file
+```js
+new webpack.LoaderOptionsPlugin({
+    minimize: true
+})
+```
+- Check [webpack.config.js](./webpack.config.js)
+- Refer to: https://webpack.js.org/plugins/loader-options-plugin/
+
+### Specify Entry Point
+```js
+entry: {
++    app: [
++        './src/main.js',
++        './src/main.scss'
++    ]
+},
+```
+This config let webpack compile `./src/main.scss` without explicit requiring in the main.js
+## License

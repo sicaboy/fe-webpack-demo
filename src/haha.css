@@ -1,0 +1,4 @@
+/* Inject CSS into DOM */
+h1 {
+    color: red;
+}
