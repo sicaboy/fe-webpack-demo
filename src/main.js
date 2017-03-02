@@ -4,6 +4,7 @@
 
 import notification from './Notification';
 import './Css';
+import './Sass';
 import './Es2015Class';
 
 

@@ -6,19 +6,19 @@
 
 ##### Initialize directory and Package.json
 ```sh
-    $ npm init -y
+$ npm init -y
 ```
 ##### Install Webpack:
 ```sh
-    $ npm install webpack --save-dev
+$ npm install webpack --save-dev
 ```
 ##### Webpack Executable Path: `node_modules/.bin/webpack`
     
 ##### Quick compile
 
 ```sh
-    $ webpack src/main.js dist/bundle.js           # One time
-    $ webpack src/main.js dist/bundle.js --watch   # Continuously watching
+$ webpack src/main.js dist/bundle.js           # One time
+$ webpack src/main.js dist/bundle.js --watch   # Continuously watching
 ```
 
 
@@ -36,8 +36,8 @@ Edit `package.json`:
 ```
 To run script: 
 ```sh
-    $ npm run build
-    $ npm run watch
+$ npm run build
+$ npm run watch
 ```
 ###### Alternative
 Use `webpack.config.js`
@@ -64,9 +64,9 @@ Edit `package.json`:
 ##### Run
 
 ```sh
-    $ webpack                # OR
-    $ npm run build          # OR
-    $ npm run watch
+$ webpack                # OR
+$ npm run build          # OR
+$ npm run watch
 ```
     
 
@@ -75,8 +75,8 @@ Edit `package.json`:
 
 ##### Install Loader
 ```sh
-    $ npm install css-loader --save-dev
-    $ npm install style-loader --save-dev
+$ npm install css-loader --save-dev
+$ npm install style-loader --save-dev
 ```
 ##### JS Code
 - [Example Code](./src/Css.js)
@@ -104,7 +104,7 @@ Edit `package.json`:
  
 ##### Installation 
 ```sh
-    $ npm install babel-loader babel-core --save-dev
+$ npm install babel-loader babel-core --save-dev
 ```
 - [Babel Official Setup Docs](https://babeljs.io/docs/setup/)
 
@@ -168,12 +168,33 @@ Then, change package.json
 
 Done, if you can minimize the [bundle js](./dist/bundle.js) by running
 ```sh
-    $ npm run production
+$ npm run production
 ```
 OR not minimized for development
 ```sh
-    $ npm run dev
+$ npm run dev
 ```
+## Compile Sass/SCSS
+
+##### Install Loader
+```sh
+$ npm install sass-loader node-sass --save-dev
+```
+
+##### Webpack config
+```js
+rules: [
++    {
++        test: /\.s[ac]ss$/,
++        use: ['style-loader', 'css-loader', 'sass-loader']
++    }
+]
+```
+Notice: loaders always applie from right to left. So the example above applies sass-loader first, then css-loader and style-loader.
+      
+Please refer to the files:
+- [./src/Sass.js](./src/Sass.js)
+- [./src/bg.scss](./src/bg.scss)
 
 ## License
 
