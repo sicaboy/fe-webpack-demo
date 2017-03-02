@@ -29,10 +29,10 @@ $ webpack src/main.js dist/bundle.js --watch   # Continuously watching
 
 Edit `package.json`:
 ```js
-    "scripts": {
-        "build": "node_modules/.bin/webpack src/main.js dist/bundle.js",
-        "watch": "npm run build -- --watch"
-    },
+"scripts": {
+    "build": "node_modules/.bin/webpack src/main.js dist/bundle.js",
+    "watch": "npm run build -- --watch"
+},
 ```
 To run script: 
 ```sh
@@ -42,23 +42,23 @@ $ npm run watch
 ###### Alternative
 Use `webpack.config.js`
 ```js
-    var webpack = require("webpack");
-    var path = require('path');
-    
-    module.exports = {
-        entry: './src/main.js',
-        output: {
-            path: path.resolve(__dirname, './dist'),
-            filename: 'bundle.js'
-        }
-    };
+var webpack = require("webpack");
+var path = require('path');
+
+module.exports = {
+    entry: './src/main.js',
+    output: {
+        path: path.resolve(__dirname, './dist'),
+        filename: 'bundle.js'
+    }
+};
 ```
 Edit `package.json`:
 ```js
-    // Change
-     "build": "webpack src/main.js dist/bundle.js"
-    // to
-    "build": "webpack"
+// Change
+ "build": "webpack src/main.js dist/bundle.js"
+// to
+"build": "webpack"
 
 ```
 ##### Run
@@ -83,20 +83,20 @@ $ npm install style-loader --save-dev
 
 ##### Webpack config
 ```js
-    // Add
-    module: {
-        rules: [
-            {
-                text: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            { 
-                test: /\.js$/, 
-                exclude: /node_modules/, 
-                loader: "babel-loader" 
-            }
-        ]
-    }
+// Add
+module: {
+    rules: [
+        {
+            text: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        },
+        { 
+            test: /\.js$/, 
+            exclude: /node_modules/, 
+            loader: "babel-loader" 
+        }
+    ]
+}
 ```
 
 
@@ -110,16 +110,15 @@ $ npm install babel-loader babel-core --save-dev
 
 ##### Webpack config
 ```js
-    module: {
-        rules: [
-            // Add
-            { 
-                test: /\.js$/, 
-                exclude: /node_modules/, 
-                loader: "babel-loader" 
-            }
-        ]
-    }
+module: {
+    rules: [
++        { 
++            test: /\.js$/, 
++            exclude: /node_modules/, 
++            loader: "babel-loader" 
++        }
+    ]
+}
 ```
 ##### Install the Babel CLI and a preset
 ```sh
